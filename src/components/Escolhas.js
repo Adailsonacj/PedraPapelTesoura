@@ -1,32 +1,34 @@
 import { Text, View, Image, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 
+const pedra = require('../../imgs/pedra.png')
+const papel = require('../../imgs/papel.png')
+const tesoura = require('../../imgs/tesoura.png')
 class Escolhas extends Component {
     render() {
-        if (this.props.escolha == 'Pedra') {
+        if (this.props.escolha === 'Pedra') {
             return (
                 <View style={styles.viewJogador}>
                     <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                    <Image source={require('../../imgs/pedra.png')} />
+                    <Image source={pedra} />
                 </View>
             )
-        } else if (this.props.escolha == 'Papel') {
+        } else if (this.props.escolha === 'Papel') {
             return (
                 <View style={styles.viewJogador}>
                     <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                    <Image source={require('../../imgs/papel.png')} />
+                    <Image source={papel} />
                 </View>
             )
-        } else if (this.props.escolha == 'Tesoura') {
+        } else if (this.props.escolha === 'Tesoura') {
             return (
                 <View style={styles.viewJogador}>
                     <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                    <Image source={require('../../imgs/tesoura.png')} />
+                    <Image source={tesoura} />
                 </View>
             )
-        } else {
-            return false
         }
+        return false
     }
 }
 
