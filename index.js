@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
 import { AppRegistry, StyleSheet, Text, View, Button, Image } from 'react-native'
+import Topo from './src/components/Topo'
+import Escolhas from './src/components/Escolhas'
 
 class app3 extends Component {
 
@@ -26,29 +28,29 @@ class app3 extends Component {
                 resultado = 'EMPATE'
             }
             if (pc == 'Papel') {
-                resultado = 'Máquina ganhou!'
+                resultado = 'VOCÊ PERDEU!'
             }
             if (pc == 'Tesoura') {
-                resultado = 'Usuário ganhou!'
+                resultado = 'VOCÊ GANHOU!!'
             }
         }
         if (escolha == 'Papel') {
             if (pc == 'Pedra') {
-                resultado = 'Usuário ganhou!'
+                resultado = 'VOCÊ GANHOU!!'
             }
             if (pc == 'Papel') {
                 resultado = 'EMPATE'
             }
             if (pc == 'Tesoura') {
-                resultado = 'Máquina ganhou!'
+                resultado = 'VOCÊ PERDEU!'
             }
         }
         if (escolha == 'Tesoura') {
             if (pc == 'Pedra') {
-                resultado = 'Máquina ganhou!'
+                resultado = 'VOCÊ PERDEU!'
             }
             if (pc == 'Papel') {
-                resultado = 'Usuário ganhou!'
+                resultado = 'VOCÊ GANHOU!!'
             }
             if (pc == 'Tesoura') {
                 resultado = 'EMPATE'
@@ -66,29 +68,20 @@ class app3 extends Component {
                 <Topo></Topo>
                 <View style={styles.painelAcoes}>
                     <View style={styles.btnEscolha}>
-                        <Button title='Pedra' onPress={() => { this.jokenpo('Pedra') }} />
+                        <Button color='#28b4e5ff' title='Pedra' onPress={() => { this.jokenpo('Pedra') }} />
                     </View>
                     <View style={styles.btnEscolha}>
-                        <Button title='Papel' onPress={() => { this.jokenpo('Papel') }} />
+                        <Button color='#28b4e5ff' title='Papel' onPress={() => { this.jokenpo('Papel') }} />
                     </View>
                     <View style={styles.btnEscolha}>
-                        <Button title='Tesoura' onPress={() => { this.jokenpo('Tesoura') }} />
+                        <Button color='#28b4e5ff' title='Tesoura' onPress={() => { this.jokenpo('Tesoura') }} />
                     </View>
                 </View >
                 <View style={styles.rodape}>
-                    <Text>Escolha do Computador: {this.state.escolhaComputador}</Text>
-                    <Text>Escolha do Usuário: {this.state.escolhaUsuario}</Text>
+                    <Escolhas escolha={this.state.escolhaComputador} jogador='Computador'></Escolhas>
+                    <Escolhas escolha={this.state.escolhaUsuario} jogador='Você'></Escolhas>
                     <Text style={styles.showResultado}>{this.state.resultado}</Text>
                 </View>
-            </View>
-        )
-    }
-}
-class Topo extends Component {
-    render() {
-        return (
-            <View alignItems='center'>
-                <Image source={require('./imgs/jokenpo.png')} />
             </View>
         )
     }
@@ -103,14 +96,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 10
     },
-    showResultado:{
-        fontSize: 25,
+    showResultado: {
+        fontSize: 30,
         fontWeight: 'bold',
-        color: 'red'
+        color: 'red',
+        marginTop: 30
     },
     rodape: {
         alignItems: 'center',
-        marginTop: 10
-    },
+        fontSize: 30,
+        fontWeight: 'bold',
+    }
 })
+
 AppRegistry.registerComponent('PedraPapelTesoura', () => app3);

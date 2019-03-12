@@ -1,0 +1,44 @@
+import { Text, View, Image, StyleSheet } from 'react-native'
+import React, { Component } from 'react'
+
+class Escolhas extends Component {
+    render() {
+        if (this.props.escolha == 'Pedra') {
+            return (
+                <View style={styles.viewJogador}>
+                    <Text style={styles.txtJogador}>{this.props.jogador}</Text>
+                    <Image source={require('../../imgs/pedra.png')} />
+                </View>
+            )
+        } else if (this.props.escolha == 'Papel') {
+            return (
+                <View style={styles.viewJogador}>
+                    <Text style={styles.txtJogador}>{this.props.jogador}</Text>
+                    <Image source={require('../../imgs/papel.png')} />
+                </View>
+            )
+        } else if (this.props.escolha == 'Tesoura') {
+            return (
+                <View style={styles.viewJogador}>
+                    <Text style={styles.txtJogador}>{this.props.jogador}</Text>
+                    <Image source={require('../../imgs/tesoura.png')} />
+                </View>
+            )
+        } else {
+            return false
+        }
+    }
+}
+
+const styles = StyleSheet.create({
+    viewJogador: {
+        alignItems: 'center',
+        marginTop: 30
+    },
+    txtJogador: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    }
+})
+
+export default Escolhas
